@@ -1,4 +1,6 @@
-FROM phusion/baseimage:0.9.17 
+FROM ubuntu:trusty 
+
+MAINTAINER "Syncano DevOps Team" <devops@syncano.com>
 
 # Use baseimage-docker's init system. 
 CMD ["/sbin/my_init"]
@@ -8,7 +10,7 @@ ENV SWIFT_PLATFORM ubuntu14.04
 
 # Install related packages 
 RUN apt-get update && \
-    apt-get install -y build-essential wget clang libedit-dev python2.7 python2.7-dev libicu52 rsync && \
+    apt-get install -y build-essential wget clang libedit-dev python2.7 python2.7-dev libicu52 rsync libxml2 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -33,4 +35,3 @@ RUN chmod 1777 /tmp
 # user without root privileges greatly improves security
 RUN groupadd -r syncano && useradd -r -g syncano syncano
 USER syncano
-
