@@ -8,7 +8,8 @@ dependencies:
 
 test:
   override:
-    -  docker run -it -v `pwd`/test.swift:/tmp/test.swift quay.io/syncano/swift-codebox swift /tmp/test.swift
+    - mv `pwd`/test.swift.template `pwd`/test.swift
+    - docker run -it -v `pwd`/test.swift:/tmp/test.swift quay.io/syncano/swift-codebox swift /tmp/test.swift
 
 deployment:
   production:
@@ -18,4 +19,3 @@ deployment:
       - sed -e "s|<REGISTRY>|$DOCKER_REGISTRY|g" -e "s|<EMAIL>|$DOCKER_EMAIL|g" -e "s|<AUTH>|$DOCKER_AUTH|g" < .dockercfg.template > ~/.dockercfg
       - docker build -t quay.io/syncano/swift-codebox .
       - docker push quay.io/syncano/swift-codebox
-
