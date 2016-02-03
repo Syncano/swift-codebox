@@ -8,7 +8,6 @@ dependencies:
 
 test:
   override:
-    - mv `pwd`/test.swift.template `pwd`/test.swift
     - docker run -it -v `pwd`/test.swift:/tmp/test.swift quay.io/syncano/swift-codebox swift /tmp/test.swift
 
 deployment:
