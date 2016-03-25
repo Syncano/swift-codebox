@@ -11,7 +11,7 @@ RUN groupadd -r syncano && \
 
 # enable everyone to use /tmp
 RUN chmod 1777 /tmp
-# -- CUT --
+# -- CUT BEGIN --
 
 ENV SWIFT_VERSION 2.2-SNAPSHOT-2015-12-10-a
 ENV SWIFT_PLATFORM ubuntu14.04
@@ -47,8 +47,7 @@ RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
 # Set Swift Path
 ENV PATH /usr/bin:$PATH
 
-# create a special user to run code
-# user without root privileges greatly improves security
+# -- CUT END --
 USER syncano
 WORKDIR /tmp
 CMD "/sbin/my_init"
