@@ -13,9 +13,9 @@ RUN groupadd -r syncano && \
 RUN chmod 1777 /tmp
 # -- CUT BEGIN --
 
-ENV SWIFT_VERSION 2.2.1-SNAPSHOT-2016-04-12-a
+ENV SWIFT_BRANCH development
+ENV SWIFT_VERSION DEVELOPMENT-SNAPSHOT-2016-04-12-a
 ENV SWIFT_PLATFORM ubuntu14.04
-ENV SWIFT_BRANCH swift-2.2-branch
 
 # Install related packages
 RUN apt-get update && apt-get install -qqy \
