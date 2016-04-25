@@ -48,9 +48,10 @@ RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
 # Set Swift Path
 ENV PATH /usr/bin:$PATH
 
-# -- CUT END --
 RUN chmod 755 -R /usr/lib/swift
 RUN chmod 755 -R /usr/lib/swift_static
+
+# -- CUT END --
 
 USER syncano
 WORKDIR /tmp
