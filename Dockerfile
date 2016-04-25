@@ -13,7 +13,8 @@ RUN groupadd -r syncano && \
 RUN chmod 1777 /tmp
 # -- CUT BEGIN --
 
-ENV SWIFT_VERSION 2.2-SNAPSHOT-2015-12-10-a
+ENV SWIFT_BRANCH development
+ENV SWIFT_VERSION DEVELOPMENT-SNAPSHOT-2016-04-12-a
 ENV SWIFT_PLATFORM ubuntu14.04
 
 # Install related packages
@@ -37,7 +38,7 @@ RUN wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import - && \
 
 # Install Swift Ubuntu 14.04 Snapshot
 RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
-    SWIFT_URL=https://swift.org/builds/$(echo "$SWIFT_PLATFORM" | tr -d .)/swift-$SWIFT_VERSION/$SWIFT_ARCHIVE_NAME.tar.gz && \
+    SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | tr -d .)/swift-$SWIFT_VERSION/$SWIFT_ARCHIVE_NAME.tar.gz && \
     wget $SWIFT_URL && \
     wget $SWIFT_URL.sig && \
     gpg --verify $SWIFT_ARCHIVE_NAME.tar.gz.sig && \
@@ -47,7 +48,11 @@ RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
 # Set Swift Path
 ENV PATH /usr/bin:$PATH
 
+RUN chmod 755 -R /usr/lib/swift
+RUN chmod 755 -R /usr/lib/swift_static
+
 # -- CUT END --
+
 USER syncano
 WORKDIR /tmp
 CMD "/sbin/my_init"
