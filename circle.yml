@@ -4,7 +4,11 @@ machine:
 
 dependencies:
   override:
-    - docker build -t quay.io/syncano/swift-codebox .
+    - sudo pip install ansible==2.1.0
+    - chmod 600 image/id_rsa
+    - ./create_swift_image.sh $BUILD_LEVEL
+    - docker images
+    - docker history quay.io/syncano/swift-codebox
 
 test:
   override:

@@ -1,0 +1,9 @@
+build-essential
+wget
+clang
+libedit-dev
+python2.7
+python2.7-dev
+libicu52
+rsync
+libxml2
