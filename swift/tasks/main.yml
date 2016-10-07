@@ -1,0 +1,24 @@
+---
+- include: common.yml
+
+- name: Copy install script
+  copy:
+    src: install_swift.sh
+    dest: /tmp/
+    mode: "0755"
+
+- name: Run install script
+  shell:
+    ./install_swift.sh
+  args:
+    chdir: /tmp
+    executable: /bin/bash
+
+- name: Allow public usage of /tmp
+  file:
+    name: "{{ item }}"
+    mode: "0755"
+    recurse: yes
+  with_items:
+    - /usr/lib/swift
+    - /usr/lib/swift_static

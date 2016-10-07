@@ -2,10 +2,10 @@
 
 This repository contains Dockerfile for Swift 2.2 image.
 
-You can build the image yourself:
+You can build the image yourself (requires Ansible 2.1.0):
 
 ```
-$ docker build -t quay.io/syncano/swift-codebox .
+$ ./create_swift_image.sh
 ```
 
 or pull it from Docker registry:
