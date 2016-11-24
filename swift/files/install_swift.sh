@@ -11,10 +11,12 @@ wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
 gpg --keyserver hkp://pool.sks-keyservers.net --refresh-keys Swift
 
 # Install Swift Ubuntu 14.04 Snapshot
-SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
-SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | tr -d .)/swift-$SWIFT_VERSION/$SWIFT_ARCHIVE_NAME.tar.gz && \
-wget $SWIFT_URL && \
-wget $SWIFT_URL.sig && \
-gpg --verify $SWIFT_ARCHIVE_NAME.tar.gz.sig && \
-tar -xvzf $SWIFT_ARCHIVE_NAME.tar.gz --directory / --strip-components=1 && \
+mkdir /swift
+SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM
+SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | tr -d .)/swift-$SWIFT_VERSION/$SWIFT_ARCHIVE_NAME.tar.gz
+wget $SWIFT_URL
+wget $SWIFT_URL.sig
+gpg --verify $SWIFT_ARCHIVE_NAME.tar.gz.sig
+tar -xvzf $SWIFT_ARCHIVE_NAME.tar.gz --directory /swift --strip-components=1
+chmod -R +rx /swift
 rm -rf $SWIFT_ARCHIVE_NAME* /tmp/* /var/tmp/*

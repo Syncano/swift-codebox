@@ -2,3 +2,4 @@ SYNCANO_APIROOT=https://api.syncano.io/
 SWIFT_BRANCH=development
 SWIFT_VERSION=DEVELOPMENT-SNAPSHOT-2016-04-12-a
 SWIFT_PLATFORM=ubuntu14.04
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/swift/usr/bin

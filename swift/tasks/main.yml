@@ -16,9 +16,6 @@
 
 - name: Allow public usage of /tmp
   file:
-    name: "{{ item }}"
+    name: /tmp
     mode: "0755"
     recurse: yes
-  with_items:
-    - /usr/lib/swift
-    - /usr/lib/swift_static
