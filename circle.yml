@@ -12,6 +12,7 @@ dependencies:
 
 test:
   override:
+    - docker run -it -v `pwd`/test.swift:/tmp/test.swift quay.io/syncano/swift-codebox env
     - docker run -it -v `pwd`/test.swift:/tmp/test.swift quay.io/syncano/swift-codebox swift /tmp/test.swift
 
 deployment:
