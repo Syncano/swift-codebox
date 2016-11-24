@@ -2,8 +2,8 @@
 
 set -e
 
-SWIFT_BRANCH=development
-SWIFT_VERSION=DEVELOPMENT-SNAPSHOT-2016-04-12-a
+SWIFT_BRANCH=swift-3.0.1-release
+SWIFT_VERSION=3.0.1-RELEASE
 SWIFT_PLATFORM=ubuntu14.04
 
 # Install Swift keys
